@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Hamburguesería - Rovers</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <!--este link tiene q estar por encima del link de css (enlace cogido de la web de fontawsesome) si no pego este link aquí, no me saldrán los iconos del nav-top-->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+
+<body>
+    <div class="wrapper" id="top">
+        <!--este id es para la flechita que sube -->
+        <header>
+            <div class="nav-top">
+                <!--toda la pagina-->
+                <div class="container">
+                    <!--la parte donde están los elementos, que tedrá otras dimensiones-->
+
+                    <!--un div por cada elemento-->
+                    <div>
+                        <a href="mailto:rovers@gmail.com">
+                            <!-- todo en el a es clicable, por eso meto elementos dentro. El a puede engoblar varios elementos en linea, y como esta contenido en div, lo he modificado a bloque. SI hubiera un p, no haria falta el div, pero tendriamos que dar display:blok en el estilo del a-->
+                            <i class="fas fa-envelope"></i>
+                            <!--para el icono. Lo he traido del icono de fontawesome que ya he linkado arriba-->
+                            <span>rover@gmail.com</span> <!-- para el texto-->
+                        </a>
+                    </div>
+
+                    <div>
+                        <a href="tel:915556677">
+                            <i class="fas fa-phone"></i>
+                            <span>915556677</span>
+                        </a>
+                    </div>
+
+                    <div>
+                        <a href="#">
+                            <!-- #, porque el enlace no va a ningún sitio por ahora.-->
+                            <i class="fas fa-shopping-cart"></i>
+                            <span>Carrito compra</span>
+                        </a>
+                    </div>
+
+                    <div>
+                        <a href="#">
+                            <i class="fas fa-user-circle"></i>
+                            <span>Usuario</span>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </header>
+    </div>
+
+
+
+
+</body>
+
+</html>

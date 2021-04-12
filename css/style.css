@@ -1,0 +1,19 @@
+@import url(./reset.css); /* Reseteo total. si lo hiciera en el index.html tendria que ponerlo antes que cualquier link del head */
+@import url('https://fonts.googleapis.com/css2?family=Handlee&family=Montserrat:wght@400;700&display=swap');
+/* esto viene de google fonts, las fuentes elegidas y el link de @ import.
+
+Me pego aquí las fuentes que salen al elegir en google fonts, para tenerlo a posteriori
+font-family: 'Handlee', cursive;
+font-family: 'Montserrat', sans-serif;
+*/
+html{
+    /*para generar scroll animados de puntos de ancla ( que la pantalla suba depsacito */
+    scroll-behavior: smooth;
+}
+*{
+    box-sizing: border-box;
+}
+
+:root{ /*defino variables que se van a repetir en mi código */
+    --color-principal: #fa573a;
+}
