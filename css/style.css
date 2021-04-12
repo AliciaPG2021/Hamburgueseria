@@ -76,7 +76,7 @@ header .nav-top a i{
 
 /*-------- SEGUNDA PARTE HEADER */
 
-/* .container tiene algunas modificaciones hechas anteriormente */
+/* .container tiene definido anteriormente un max-width y un margin, por eso este segundo div, se ajustará también a ese tamaño en la pantalla */
 
 header nav{
     padding: calc(var(--padding)*2); /*la variable de padding eran 10px, queremos 20px, por eso lo multiplico *2  */
@@ -84,11 +84,9 @@ header nav{
 header nav .container{/*voy a  mover los elementos*/
     display: flex;
     flex-wrap: wrap; /*elijo yo donde colocar las cosas, tengo que ir elemento a elemento colocando las cosas, si no lo pongo el ul tambien se coloca en linea*/
-    justify-content: space-between; /*importante no poner tamaño en los elementos, porque si no, se ajustará a ese tamaño*/
+    justify-content: space-between; /*importante no poner tamaño en los elementos logo y hamburguesa, porque si no, se ajustará justify sobre el tamaño definidos en ellos*/
    
 }
-
-
 
 header nav .logo img{
     max-width: 6.250em;/*daria lo mismo poner solo width, porque no hay dispositivos que tenga menos de 100px*/
@@ -97,8 +95,6 @@ header nav .logo img{
 
 header nav .hamburguesa{
     cursor: pointer; /* hace que funcione como un enlace y le sale la mano de enlace */
-    
-    
     
 }
 
@@ -112,6 +108,31 @@ header nav .hamburguesa div{
 header nav ul{
     width: 100%;/*importante dar este tamaño, para que ocupe todo, y los otros dos elem. logo/hamburguesa se reparten en justify a los laterales*/
 }
+
+header nav .menu li a{/* tenemos que aplicar en los a, para que sea todo el boton clicable*/
+    display: block;
+    width: 100%; /*no es necesario*/
+    text-decoration: none;
+    text-align: center; /*si no lo hubiera convertido en bloque, no se centraria*/
+    padding: calc(var(--padding)*2);
+    color: #aaa;
+    border-bottom: 1px solid #aaa;
+}
+
+header nav .menu li:last-child a{/*el a del ultimo li*/
+    border-bottom: none;
+}
+
+header nav .menu li .activo{ /* la pagina en la que estoy, que he marcado como activo en html se queda de color rojo*/
+    color:var(--color-principal);
+}
+header nav .menu li a:hover{/*los a seponen rojos cuando pasamos el cursor por encima*/
+    color: var(--color-principal);
+}
+
+
+
+
 
 /*-------- FINAL HEADER -------*/
 
@@ -136,5 +157,23 @@ header nav ul{
 }
 
 @media(min-width:1004px){
-    
+    header nav .hamburguesa{/*quito directamente al padre, para que desaparezca todo*/
+        display:none;
+        
+    }
+    header nav ul{
+        width: auto;/*sobreescribimos el width escrito anteriormente, y coge el flex marcado antes*/
+    }
+    header nav .menu li{
+        display: inline-block;
+
+    }
+
+    header nav .menu li a{
+        padding:0.5em var(--padding);
+        border-bottom: none;
+    }
+    header{ /*sombra al header box-shadow: ejex ejey difuminado color*/
+        box-shadow: 0px 2px 10px gray;
+    }
 }
