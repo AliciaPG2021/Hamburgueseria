@@ -1,4 +1,5 @@
-@import url(./reset.css); /* Reseteo total. si lo hiciera en el index.html tendria que ponerlo antes que cualquier link del head */
+@import url(reset.css); /* Reseteo total. si lo hiciera en el index.html tendria que ponerlo antes que cualquier link del head */
+
 @import url('https://fonts.googleapis.com/css2?family=Handlee&family=Montserrat:wght@400;700&display=swap');
 /* esto viene de google fonts, las fuentes elegidas y el link de @ import.
 
@@ -16,4 +17,124 @@ html{
 
 :root{ /*defino variables que se van a repetir en mi código */
     --color-principal: #fa573a;
+    --color-secundario: #21242e;
+    /*copiado de los sacado del google fonts*/
+    --fuente-principal: 'Montserrat', sans-serif;
+    --fuente-secundaria:'Handlee', cursive;
+    --fontsize:1em; /*lo que sea que tenga configurado cada dispostivo del usuario */
+    --anchomaximo: 68.750em; /* 1100px convertidos en em */
+    --margingrid: 1em;
+    --padding: 0.625em; /*10px*/
+}
+
+img{ /*ponerlo siempre, para que la imagen no se deforme al pner responsive*/
+    width: 100%;
+    height: auto;
+    display:block;
+}
+
+body{
+    font-family: var(--fuente-principal); /*traigo aquí la variable predefinida*/
+    font-size: var(--fontsize);
+}
+
+.container{
+    max-width: var(--anchomaximo);
+    margin: 0 auto;
+}
+
+/*-------- INICIO HEADER -------*/
+
+
+/*-------- PRIMERA PARTE HEADER */
+
+header .nav-top{ 
+    background-color: var(--color-secundario);
+    padding: calc(var(--padding) * 2) 0px; /* 20px arriba y abajo, 0px decha/izq*/
+    
+}
+
+header .nav-top .container{/*uso la herencia para que solo se aplique a los elementos de container que esta en el nav´top del header*/
+
+    display:flex; /*se puede utilizar display: inline, cssgrid, float, pero elegimos ésto para poder colocarlo mejor justificandolo*/
+    justify-content: space-around;
+}
+
+header .nav-top a{
+    color: var(--color-principal);
+    text-decoration: none;
+
+}
+
+header .nav-top a span{/*estoy quitando el texto, no quiero que aparezca ni siquiera el espacio que ocupa*/
+    display:none;
+}
+
+header .nav-top a i{
+    font-size: 150%;
+}
+
+/*-------- SEGUNDA PARTE HEADER */
+
+/* .container tiene algunas modificaciones hechas anteriormente */
+
+header nav{
+    padding: calc(var(--padding)*2); /*la variable de padding eran 10px, queremos 20px, por eso lo multiplico *2  */
+}
+header nav .container{/*voy a  mover los elementos*/
+    display: flex;
+    flex-wrap: wrap; /*elijo yo donde colocar las cosas, tengo que ir elemento a elemento colocando las cosas, si no lo pongo el ul tambien se coloca en linea*/
+    justify-content: space-between; /*importante no poner tamaño en los elementos, porque si no, se ajustará a ese tamaño*/
+   
+}
+
+
+
+header nav .logo img{
+    max-width: 6.250em;/*daria lo mismo poner solo width, porque no hay dispositivos que tenga menos de 100px*/
+}
+
+
+header nav .hamburguesa{
+    cursor: pointer; /* hace que funcione como un enlace y le sale la mano de enlace */
+    
+    
+    
+}
+
+header nav .hamburguesa div{
+    border-top: 2px solid #aaa;
+    margin-bottom: var(--padding);
+    width: 1.875em;
+}
+
+
+header nav ul{
+    width: 100%;/*importante dar este tamaño, para que ocupe todo, y los otros dos elem. logo/hamburguesa se reparten en justify a los laterales*/
+}
+
+/*-------- FINAL HEADER -------*/
+
+
+
+
+
+/* ------- MEDIA QUERIES ------*/
+@media(min-width:600px){
+    
+
+}
+
+@media(min-width:768px){
+    header .nav-top a span{
+        display: inline; /*hago aparecer el texto y quiero que se coloque en linea*/
+        color: white;
+        font-size: 120%;
+        margin-left:5px;
+    }
+
+}
+
+@media(min-width:1004px){
+    
 }
