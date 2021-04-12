@@ -85,7 +85,7 @@ header nav .container{/*voy a  mover los elementos*/
     display: flex;
     flex-wrap: wrap; /*elijo yo donde colocar las cosas, tengo que ir elemento a elemento colocando las cosas, si no lo pongo el ul tambien se coloca en linea*/
     justify-content: space-between; /*importante no poner tamaño en los elementos logo y hamburguesa, porque si no, se ajustará justify sobre el tamaño definidos en ellos*/
-   
+   width: 90%;
 }
 
 header nav .logo img{
@@ -164,6 +164,85 @@ footer a:hover{
 
 
 /*------- FINAL FOOTER ------*/
+
+
+/*------- INICIO HERO ____*/
+
+.hero{
+    background-image: url(../images/fondo.jpg);
+    height: 60vh;/*no se puden poner en px, porque el scroll hace que el alto sea infinito */
+    background-position: center center;/*con esto movemos la imagen para cuadrar lo que nos interesa, aqui vemos el centro de la imagen, podemos poner right, left...*/
+    background-repeat: no-repeat;
+    background-size: cover; /*pedimos a la imagen q se ajuste al 100% del contenedor sin deformar*/
+    color:white;
+    
+    /*para ajustar el texto en el centro*/
+    display:flex;
+
+    /*para dar opacidad a la imagen, elegimos un color y fusionamos con la imagen con blend-mode*/
+    background-color: #777; 
+    background-blend-mode: multiply;/*gano oscuridad. Para dar claridad  a la imagen: soft-light*/
+
+}
+.hero .container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 90%;/*he perdido el width anterior por eso tengo que definir uno nuevo*/
+
+}
+
+.hero h1{
+    font-family: var(--fuente-secundaria);
+    font-size: 2.25em;
+}
+
+.hero h2{
+    color: var(--color-principal);
+    margin: var(--margingrid) 0px;
+    font-size: 1.25em;
+}
+
+.hero p{
+    font-size: 1.15em;
+}
+
+.hero .social li{
+    display:inline-block;
+    margin-right: var(--margingrid);
+    font-size: calc(var(--fontsize)*2);
+}
+
+.hero .social li a{ /*el icono coge el valor que le demos al enlace, aqui estamos cambiando el color del icono*/
+    color: white;
+}
+
+.boton{/*lo pongo sin herencia para poder reutilizarlo más adelante*/
+    background-color: var(--color-principal);
+    color: white;
+    /*para poder ponerle un padding, que se comporte como elemento en bloque pero siga manteniéndose en linea*/
+    display: inline-block;
+    padding: 1.15em;
+    margin: var(--margingrid) 0px;
+    text-decoration: none;
+    border: 1px solid var(--color-principal);/* auqnue aqui no haga falta el borde, lo ponemos porque asi cuando hagamos hover no cambia de tamaño, que si pasaria sin poner aqui el borde, porque añadiría el borde al tamaño del elemento*/
+
+}
+
+.boton:hover{
+    background-color: transparent;
+    border: 1px solid var(--color-principal);
+    color:var(--color-principal);
+
+}
+.boton:hover i{/*lo que hace el i cuando hago hover sobre el boton*/
+    transform: translateX(5px);
+    transition: 0.5s;
+    /*con esto consigo que la flecha se mueve ligeramente el espacio que le indico, durante el tiempo que le indico*/
+
+}
+
+/*------- FINAL HERO ____*/
 
 /* ------- MEDIA QUERIES ------*/
 @media(min-width:600px){
