@@ -1,0 +1,450 @@
+@import url(reset.css); /* Reseteo total. si lo hiciera en el index.html tendria que ponerlo antes que cualquier link del head */
+
+@import url('https://fonts.googleapis.com/css2?family=Handlee&family=Montserrat:wght@400;700&display=swap');
+/* esto viene de google fonts, las fuentes elegidas y el link de @ import.
+
+Me pego aquí las fuentes que salen al elegir en google fonts, para tenerlo a posteriori
+font-family: 'Handlee', cursive;
+font-family: 'Montserrat', sans-serif;
+*/
+html{
+    /*para generar scroll animados de puntos de ancla ( que la pantalla suba depsacito */
+    scroll-behavior: smooth;
+}
+*{
+    box-sizing: border-box;
+}
+
+:root{ /*defino variables que se van a repetir en mi código */
+    --color-principal: #fa573a;
+    --color-secundario: #21242e;
+    /*copiado de los sacado del google fonts*/
+    --fuente-principal: 'Montserrat', sans-serif;
+    --fuente-secundaria:'Handlee', cursive;
+    --fontsize:1em; /*lo que sea que tenga configurado cada dispostivo del usuario */
+    --anchomaximo: 68.750em; /* 1100px convertidos en em */
+    --margingrid: 1em;
+    --padding: 0.625em; /*10px*/
+}
+
+img{ /*ponerlo siempre, para que la imagen no se deforme al pner responsive*/
+    width: 100%;
+    height: auto;
+    display:block;
+}
+
+body{
+    font-family: var(--fuente-principal); /*traigo aquí la variable predefinida*/
+    font-size: var(--fontsize);
+}
+
+main p{
+    color: #666;
+    line-height: 1.25em;/*espacio entre las lineas*/
+}
+
+.container{
+    max-width: var(--anchomaximo);
+    margin: 0 auto;
+}
+
+
+
+/*-------- INICIO HEADER -------*/
+
+
+/*-------- PRIMERA PARTE HEADER */
+
+header .nav-top{ 
+    background-color: var(--color-secundario);
+    padding: calc(var(--padding) * 2) 0px; /* 20px arriba y abajo, 0px decha/izq*/
+    
+}
+
+header .nav-top .container{/*uso la herencia para que solo se aplique a los elementos de container que esta en el nav´top del header*/
+
+    display:flex; /*se puede utilizar display: inline, cssgrid, float, pero elegimos ésto para poder colocarlo mejor justificandolo*/
+    justify-content: space-around;
+}
+
+header .nav-top a{
+    color: var(--color-principal);
+    text-decoration: none;
+
+}
+
+header .nav-top a span{/*estoy quitando el texto, no quiero que aparezca ni siquiera el espacio que ocupa*/
+    display:none;
+}
+
+header .nav-top a i{
+    font-size: 150%;
+}
+
+/*-------- SEGUNDA PARTE HEADER */
+
+/* .container tiene definido anteriormente un max-width y un margin, por eso este segundo div, se ajustará también a ese tamaño en la pantalla */
+
+header nav{
+    padding: calc(var(--padding)*2); /*la variable de padding eran 10px, queremos 20px, por eso lo multiplico *2  */
+}
+header nav .container{/*voy a  mover los elementos*/
+    display: flex;
+    flex-wrap: wrap; /*elijo yo donde colocar las cosas, tengo que ir elemento a elemento colocando las cosas, si no lo pongo el ul tambien se coloca en linea*/
+    justify-content: space-between; /*importante no poner tamaño en los elementos logo y hamburguesa, porque si no, se ajustará justify sobre el tamaño definidos en ellos*/
+   width: 90%;
+}
+
+header nav .logo img{
+    max-width: 6.250em;/*daria lo mismo poner solo width, porque no hay dispositivos que tenga menos de 100px*/
+}
+
+
+header nav .hamburguesa{
+    cursor: pointer; /* hace que funcione como un enlace y le sale la mano de enlace */
+    
+}
+
+header nav .hamburguesa div{
+    border-top: 2px solid #aaa;
+    margin-bottom: var(--padding);
+    width: 1.875em;
+}
+
+
+header nav ul{
+    width: 100%;/*importante dar este tamaño, para que ocupe todo, y los otros dos elem. logo/hamburguesa se reparten en justify a los laterales*/
+}
+
+header nav .menu li a{/* tenemos que aplicar en los a, para que sea todo el boton clicable*/
+    display: block;
+    width: 100%; /*no es necesario*/
+    text-decoration: none;
+    text-align: center; /*si no lo hubiera convertido en bloque, no se centraria*/
+    padding: calc(var(--padding)*2);
+    color: #aaa;
+    border-bottom: 1px solid #aaa;
+}
+
+header nav .menu li:last-child a{/*el a del ultimo li*/
+    border-bottom: none;
+}
+
+header nav .menu li .activo{ /* la pagina en la que estoy, que he marcado como activo en html se queda de color rojo*/
+    color:var(--color-principal);
+}
+header nav .menu li a:hover{/*los a seponen rojos cuando pasamos el cursor por encima*/
+    color: var(--color-principal);
+}
+/*-------- FINAL HEADER -------*/
+
+/*------- INICIO FOOTER ------*/
+
+footer{
+    background-color: var(--color-secundario);
+    padding: calc(var(--padding)*2) 0px;
+    color: white;
+    text-align: center;
+    /*lo ponemos para que el footer se quede fijo abajo*/
+    position: fixed;
+    bottom:0;
+    width: 100%;/*tenemos que ponerle este tamaño, porque si no no sabe cuanto tiene que ocupar*/
+}
+
+footer a{
+    color:white;
+    text-decoration: none;
+}
+
+footer a:hover{
+    color: var(--color-principal);
+}
+
+.flecha a{/*--------FLECHA QUE SUBE -----*/
+    display:block;
+    color: var(--color-principal);
+    position: fixed;
+    bottom: 70px;
+    right: 20px;
+    font-size: 300%;
+}
+
+
+/*------- FINAL FOOTER ------*/
+
+
+/*------- INICIO HERO ____*/
+
+.hero{
+    background-image: url(../images/fondo.jpg);
+    height: 60vh;/*no se puden poner en px, porque el scroll hace que el alto sea infinito */
+    background-position: center center;/*con esto movemos la imagen para cuadrar lo que nos interesa, aqui vemos el centro de la imagen, podemos poner right, left...*/
+    background-repeat: no-repeat;
+    background-size: cover; /*pedimos a la imagen q se ajuste al 100% del contenedor sin deformar*/
+    color:white;
+    
+    /*para ajustar el texto en el centro*/
+    display:flex;
+
+    /*para dar opacidad a la imagen, elegimos un color y fusionamos con la imagen con blend-mode*/
+    background-color: #777; 
+    background-blend-mode: multiply;/*gano oscuridad. Para dar claridad  a la imagen: soft-light*/
+
+}
+.hero .container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 90%;/*he perdido el width anterior por eso tengo que definir uno nuevo*/
+
+}
+
+.hero h1{
+    font-family: var(--fuente-secundaria);
+    font-size: 2.25em;
+}
+
+.hero h2{
+    color: var(--color-principal);
+    margin: var(--margingrid) 0px;
+    font-size: 1.25em;
+}
+
+.hero p{
+    font-size: 1.15em;
+}
+
+.hero .social li{
+    display:inline-block;
+    margin-right: var(--margingrid);
+    font-size: calc(var(--fontsize)*2);
+}
+
+.hero .social li a{ /*el icono coge el valor que le demos al enlace, aqui estamos cambiando el color del icono*/
+    color: white;
+}
+
+.boton{/*lo pongo sin herencia para poder reutilizarlo más adelante*/
+    background-color: var(--color-principal);
+    color: white;
+    /*para poder ponerle un padding, que se comporte como elemento en bloque pero siga manteniéndose en linea*/
+    display: inline-block;
+    padding: 1.15em;
+    margin: var(--margingrid) 0px;
+    text-decoration: none;
+    border: 1px solid var(--color-principal);/* auqnue aqui no haga falta el borde, lo ponemos porque asi cuando hagamos hover no cambia de tamaño, que si pasaria sin poner aqui el borde, porque añadiría el borde al tamaño del elemento*/
+
+}
+
+.boton:hover{
+    background-color: transparent;
+    border: 1px solid var(--color-principal);
+    color:var(--color-principal);
+
+}
+.boton:hover i{/*lo que hace el i cuando hago hover sobre el boton*/
+    transform: translateX(5px);
+    transition: 0.5s;
+    /*con esto consigo que la flecha se mueve ligeramente el espacio que le indico, durante el tiempo que le indico*/
+
+}
+/*------- FINAL HERO ____*/
+
+
+/* -----INICIO OUR SERVICES ------*/
+main section{
+    padding: 2.125em 1.5em; /*mmargen inferior y superior de todas las secciones */
+}
+
+main section h2{
+    color: black;
+    font-family: var(--fuente-secundaria);
+    font-size: 2em;
+    text-align: center;
+}
+
+main section h2 span{ /*este span es para poder cambiar el color a la mitad del titulo*/
+    color: var(--color-principal);
+}
+
+main section .underline{/* es un contenedor donde voy a hacer cambio de eje*/
+    position: relative; /* contenedor en posicion relativo y contenido en abosulta*/
+    width: 6.250em;/*100px*/
+    margin: 0 auto;
+    color: var(--color-principal);
+    font-weight: 700;/* me he traido de google fonts la negrita de esta fuente, asi que en lugar de forzar un bold, pongo la negrita que he descargado*/
+    text-align: center;
+    margin-bottom: calc(var(--margingrid)*2); /*espacio que separa con los articulos*/
+}
+
+main section .underline hr{
+    position: absolute; /*saco la linea del flujo, la x ocupará el espacio de la linea*/
+    width: 100%; /* que se ajuste al tamaño del contenedor(los 6.250em)*/
+    top: -1px; /*para centrar totalmente la x en la linea*/
+    border-color: var(--color-principal); 
+}
+
+main #ourservices .grid{ /*----- PRIMERA SECCION ---*/
+    display: grid;
+    gap:var(--margingrid);
+
+}
+
+main #ourservices .grid article{ /*cambios comunes a todos los articles*/
+    border-bottom: 1px solid #aaa;
+    padding: 1.5em 0;
+}
+
+main section h3{
+    font-weight: 700;/*la fuente sacada de google en negrita*/
+    font-size: 1.10em;
+    margin: var(--padding) 0; /*le pongo el tamaño del padding que son 10px por reutiliarlo*/
+}
+
+.enlace{ /*--------ENLACE: LEER MAS----*/
+
+    display:inline-block; /*sea siendo linea pero pueda ponerle padding y tratarle como bloque*/
+    text-decoration: none;
+    padding-top: var(--padding);
+    font-weight: 700;
+    color: var(--color-principal);
+    
+}
+/*para que la flecha se mueva cuando te pones encima*/
+.enlace:hover i{
+    transform: translateX(5px);
+    transition: 0.5s;
+}
+/*para que la flecha se mueva al volver a su posicion inicial*/
+.enlace i{
+    
+    transition: 0.5s;
+}
+/* ---------------------------FIN ENLACE------*/
+
+main #ourservices article>div .fas{/*los iconos de los div */
+    color: var(--color-principal);
+    font-size: 1.5em;
+    border: 1px solid var(--color-principal);
+    padding: 0.5em;
+
+}
+
+.fa-truck{/*girar la furgoneta para que mire al otro lado*/
+    transform: rotateY(180deg);
+
+}
+/* -----FINAL OUR SERVICES ------*/
+
+/*-------INICIO ABOUT US ---------*/
+
+/*cuando tenemos un pie fijo abajo (footer fixed) habrá que poner un poco de padding a la ultima seccion para que separe y no se pegue abajo*/
+main section:last-child{
+    padding-bottom: 90px;
+}
+
+main section h4{
+    margin: var(--padding) 0;
+    color: var(--color-principal);
+}
+
+main section .flex{
+    display:flex; /*no hace falta poner nada, porque paso de un sistema de columna a uno de fila*/
+    flex-direction: column;
+}
+
+/*hay que girar los div para que haga el efecto*/
+main .imagen .marco{ /*giro el marco, que com ocontiene la imagen, ésta también girará por eso es necesario cambiar la imagen*/
+    border: 3px solid var(--color-principal);
+    transform: rotateZ(10deg);
+    transition: 1s;
+}
+
+main .imagen .marco img{/*lo roto al lado contrario para que haga elefecto*/
+    transform: rotateZ(-10deg);
+    transition: 1s;
+}
+
+main .imagen:hover .marco{
+    transform: rotateZ(0deg);
+}
+
+main .imagen:hover .marco img{
+    transform: rotateZ(0deg);
+}
+
+/*-------FINAL ABOUT US ---------*/
+
+/* ------- MEDIA QUERIES ------*/
+@media(min-width:600px){
+    /*modificacion de la posicion de los articulos con cssgrid*/
+    main #ourservices .grid{
+        grid-template-columns: repeat(2, 1fr);
+
+    }
+    main #ourservices .grid article:last-child{
+        grid-column: 1/3; 
+    }
+
+    main #ourservices .grid article{ /*modificamos la linea horizontal de debajo del texto, ahora la queremos que salga a la izq. Siempre hay quemo dificar lo que tenemos y eliminar lo que no necesitemos*/
+        border-left: 1px solid #aaa;
+        border-bottom:none;
+        padding: 1.5em;
+        
+    }
+
+    main section .flex{
+        flex-direction: row;
+    }
+
+    main section .flex .columna{
+        margin: 0 var(--margingrid);
+    }
+
+}
+
+@media(min-width:768px){
+
+    
+    header .nav-top a span{
+        display: inline; /*hago aparecer el texto y quiero que se coloque en linea*/
+        color: white;
+        font-size: 120%;
+        margin-left:5px;
+    }
+
+    main #ourservices .grid{ /*modificacion de la posicion de los articulos*/
+        grid-template-columns: repeat(3, 1fr); /*con esto creamos 4 grid horizontales, de manera que habra que cambiar el porcentaje dado en la media querie de 600px*/
+
+    }
+    main #ourservices .grid article:last-child{
+        grid-column: 3/4; /*tengo que sobreescribir lo dicho en 600px*/
+    }
+    
+
+}
+
+@media(min-width:1004px){
+    header nav .hamburguesa{/*quito directamente al padre, para que desaparezca todo*/
+        display:none;
+        
+    }
+    header nav ul{
+        width: auto;/*sobreescribimos el width escrito anteriormente, y coge el flex marcado antes*/
+    }
+    header nav .menu li{
+        display: inline-block;
+
+    }
+
+    header nav .menu li a{
+        padding:0.5em var(--padding);
+        border-bottom: none;
+    }
+    header{ /*sombra al header box-shadow: ejex ejey difuminado color*/
+        box-shadow: 0px 2px 10px gray;
+    }
+    footer{
+        text-align:left;
+    }
+}
