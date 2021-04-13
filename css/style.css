@@ -353,6 +353,25 @@ main section .flex{
     flex-direction: column;
 }
 
+/*hay que girar los div para que haga el efecto*/
+main .imagen .marco{ /*giro el marco, que com ocontiene la imagen, ésta también girará por eso es necesario cambiar la imagen*/
+    border: 3px solid var(--color-principal);
+    transform: rotateZ(10deg);
+    transition: 1s;
+}
+
+main .imagen .marco img{/*lo roto al lado contrario para que haga elefecto*/
+    transform: rotateZ(-10deg);
+    transition: 1s;
+}
+
+main .imagen:hover .marco{
+    transform: rotateZ(0deg);
+}
+
+main .imagen:hover .marco img{
+    transform: rotateZ(0deg);
+}
 
 /*-------FINAL ABOUT US ---------*/
 
