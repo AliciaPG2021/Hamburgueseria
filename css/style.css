@@ -334,16 +334,46 @@ main #ourservices article>div .fas{/*los iconos de los div */
     transform: rotateY(180deg);
 
 }
-
-
-
 /* -----FINAL OUR SERVICES ------*/
 
+/*-------INICIO ABOUT US ---------*/
 
+/*cuando tenemos un pie fijo abajo (footer fixed) habrá que poner un poco de padding a la ultima seccion para que separe y no se pegue abajo*/
+main section:last-child{
+    padding-bottom: 90px;
+}
 
+main section h4{
+    margin: var(--padding) 0;
+    color: var(--color-principal);
+}
 
+main section .flex{
+    display:flex; /*no hace falta poner nada, porque paso de un sistema de columna a uno de fila*/
+    flex-direction: column;
+}
 
+/*hay que girar los div para que haga el efecto*/
+main .imagen .marco{ /*giro el marco, que com ocontiene la imagen, ésta también girará por eso es necesario cambiar la imagen*/
+    border: 3px solid var(--color-principal);
+    transform: rotateZ(10deg);
+    transition: 1s;
+}
 
+main .imagen .marco img{/*lo roto al lado contrario para que haga elefecto*/
+    transform: rotateZ(-10deg);
+    transition: 1s;
+}
+
+main .imagen:hover .marco{
+    transform: rotateZ(0deg);
+}
+
+main .imagen:hover .marco img{
+    transform: rotateZ(0deg);
+}
+
+/*-------FINAL ABOUT US ---------*/
 
 /* ------- MEDIA QUERIES ------*/
 @media(min-width:600px){
@@ -361,6 +391,14 @@ main #ourservices article>div .fas{/*los iconos de los div */
         border-bottom:none;
         padding: 1.5em;
         
+    }
+
+    main section .flex{
+        flex-direction: row;
+    }
+
+    main section .flex .columna{
+        margin: 0 var(--margingrid);
     }
 
 }
