@@ -334,16 +334,27 @@ main #ourservices article>div .fas{/*los iconos de los div */
     transform: rotateY(180deg);
 
 }
-
-
-
 /* -----FINAL OUR SERVICES ------*/
 
+/*-------INICIO ABOUT US ---------*/
+
+/*cuando tenemos un pie fijo abajo (footer fixed) habrá que poner un poco de padding a la ultima seccion para que separe y no se pegue abajo*/
+main section:last-child{
+    padding-bottom: 90px;
+}
+
+main section h4{
+    margin: var(--padding) 0;
+    color: var(--color-principal);
+}
+
+main section .flex{
+    display:flex; /*no hace falta poner nada, porque paso de un sistema de columna a uno de fila*/
+    flex-direction: column;
+}
 
 
-
-
-
+/*-------FINAL ABOUT US ---------*/
 
 /* ------- MEDIA QUERIES ------*/
 @media(min-width:600px){
@@ -361,6 +372,14 @@ main #ourservices article>div .fas{/*los iconos de los div */
         border-bottom:none;
         padding: 1.5em;
         
+    }
+
+    main section .flex{
+        flex-direction: row;
+    }
+
+    main section .flex .columna{
+        margin: 0 var(--margingrid);
     }
 
 }
