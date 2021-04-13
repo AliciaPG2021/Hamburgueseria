@@ -241,12 +241,65 @@ footer a:hover{
     /*con esto consigo que la flecha se mueve ligeramente el espacio que le indico, durante el tiempo que le indico*/
 
 }
-
 /*------- FINAL HERO ____*/
+
+
+/* -----INICIO OUR SERVICES ------*/
+main section{
+    padding: 2.125em 1.5em; /*mmargen inferior y superior de todas las secciones */
+}
+
+main section h2{
+    color: black;
+    font-family: var(--fuente-secundaria);
+    font-size: 2em;
+    text-align: center;
+}
+
+main section h2 span{ /*este span es para poder cambiar el color a la mitad del titulo*/
+    color: var(--color-principal);
+}
+
+main section .underline{/* es un contenedor donde voy a hacer cambio de eje*/
+    position: relative; /* contenedor en posicion relativo y contenido en abosulta*/
+    width: 6.250em;/*100px*/
+    margin: 0 auto;
+    color: var(--color-principal);
+    font-weight: 700;/* me he traido de google fonts la negrita de esta fuente, asi que en lugar de forzar un bold, pongo la negrita que he descargado*/
+    text-align: center;
+    margin-bottom: calc(var(--margingrid)*2); /*espacio que separa con los articulos*/
+}
+
+main section .underline hr{
+    position: absolute; /*saco la linea del flujo, la x ocupará el espacio de la linea*/
+    width: 100%; /* que se ajuste al tamaño del contenedor(los 6.250em)*/
+    top: -1px; /*para centrar totalmente la x en la linea*/
+    border-color: var(--color-principal); 
+}
+
+main #ourservices .grid{ /*----- PRIMERA SECCION ---*/
+    display: grid;
+    gap:var(--margingrid);
+
+}
+
+main #ourservices .grid article{
+    
+}
+
+
+/* -----FINAL OUR SERVICES ------*/
 
 /* ------- MEDIA QUERIES ------*/
 @media(min-width:600px){
-    
+    /*modificacion de la posicion de los articulos con cssgrid*/
+    main #ourservices .grid{
+        grid-template-columns: repeat(2, 1fr);
+
+    }
+    main #ourservices .grid article:last-child{
+        grid-column: 1/3; 
+    }
 
 }
 
@@ -260,6 +313,13 @@ footer a:hover{
         margin-left:5px;
     }
 
+    main #ourservices .grid{ /*modificacion de la posicion de los articulos*/
+        grid-template-columns: repeat(3, 1fr); /*con esto creamos 4 grid horizontales, de manera que habra que cambiar el porcentaje dado en la media querie de 600px*/
+
+    }
+    main #ourservices .grid article:last-child{
+        grid-column: 3/4; /*tengo que sobreescribir lo dicho en 600px*/
+    }
     
 
 }
